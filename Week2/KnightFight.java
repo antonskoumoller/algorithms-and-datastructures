@@ -1,4 +1,3 @@
-package Week2;
 
 // NOT CORRECT! Can be fixed.
 import java.util.Scanner;

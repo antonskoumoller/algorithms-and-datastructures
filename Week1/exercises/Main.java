@@ -84,6 +84,24 @@ public class Main {
             System.out.println("Accesses: "+  accessCount + " Array is: " + Arrays.toString(id));
             accessCount = 0;
         }
+
+        /*
+         * 1.5.8 - Yellow   Give a counterexample that shows why this intuitive implementation of
+         *                  union() for quick-find is not correct:
+         * 
+         *  public void union (int p, int q) {
+                if ( connected (p, q)) return ;
+                // Rename p’s component to q’s name .
+                for (int i = 0; i < id. length ; i ++)
+                if (id[i] == id[p]) id[i] = id[q];
+                count - -;
+         }
+         *      
+         *      Using this union implementation with the quickFind(p) method will return the set p's parent set ID and not the root parent set ID for the connected component. 
+         *      The purpose with quickFind is to find the set that it belongs to, but in this case it *may* return a set that it doesn't belong to
+         *      but rather a set that has another parent and so forth, until we reach the root of the component.
+         */
+
         
 
 

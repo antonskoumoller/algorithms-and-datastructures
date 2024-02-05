@@ -1,4 +1,3 @@
-package Week2; 
 
 public class Knight {
     private int health;

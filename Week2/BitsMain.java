@@ -1,10 +1,11 @@
-package Week2;
 import java.util.Scanner;
+
 
 public class BitsMain {
     
 
-    public static void main(String[] args) {
+    public static void main(String[] args) /* throws FileNotFoundException */ {
+        // File testfile = new File("Week2\\bitsTest.txt");
         Scanner sc = new Scanner(System.in);
         String[] commandLine;
         while(sc.hasNextLine()) {
@@ -28,18 +29,20 @@ public class BitsMain {
                     case "AND":
                         x = Integer.parseInt(commandLine[1]);
                         y = Integer.parseInt(commandLine[2]);
-                        if (x == 9 || y == 9) {
-                            register[Integer.parseInt(commandLine[1])] = 9;
+                        if (register[x] == 0 || register[y] == 0) {
+                            register[x] = 0;
+                        } else if (register[x] == 9 || register[y] == 9) {
+                            register[x] = 9;
                         } else {
                             boolean p;
                             boolean q;
-                            if(x == 1) {
+                            if(register[x] == 1) {
                                 p = true;
                             } else {
                                 p = false;
                             }
 
-                            if(y == 1) {
+                            if(register[y] == 1) {
                                 q = true;
                             } else {
                                 q = false;
@@ -47,10 +50,10 @@ public class BitsMain {
 
                             boolean answer = p && q;
                             if(answer) {
-                                register[Integer.parseInt(commandLine[1])] = 1;
+                                register[x] = 1;
 
                             } else {
-                                register[Integer.parseInt(commandLine[1])] = 0;
+                                register[x] = 0;
                             }   
                         }
 
@@ -58,12 +61,14 @@ public class BitsMain {
                     case "OR":
                         x = Integer.parseInt(commandLine[1]);
                         y = Integer.parseInt(commandLine[2]);
-                        if (x == 1 || y == 1){
-                            register[Integer.parseInt(commandLine[1])] = 1;
-                        } else if (x == 0 && y == 0) {
-                            register[Integer.parseInt(commandLine[1])] = 0;
+                        if (register[x] == 1 || register[y] == 1){
+                            register[x] = 1;
+                        } else if (register[x] == 0 && register[y] == 0) {
+                            register[x] = 0;
+                        } else if ((register[x] == 9 && register[y] == 0) || (register[x] == 0 && register[y] == 9)){
+                            register[x] = 9;
                         } else {
-                            register[Integer.parseInt(commandLine[1])] = 9;
+                            register[x] = 9;
                         }
                         break;
                 
@@ -71,13 +76,20 @@ public class BitsMain {
                         break;
                 }
             }
-            for (int i = 31; i <= 0; i--) {
-                if(register[i] == 9) {
-                    System.out.println("?");
-                } else {
-                    System.out.println(register[i]);
+            String resultRegister = "";
+            if (commands != 0) {
+                for (int i = 31; i >= 0; i--) {
+                    if(register[i] == 9) {
+                        resultRegister += "?";
+                    } else {
+                        resultRegister += register[i];
+                    }
                 }
+                System.out.println(resultRegister);
+            } else {
+                return;
             }
+            
         }
     }
 }
