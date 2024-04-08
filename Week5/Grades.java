@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 public class Grades {
-    public static void main(String[] args)  {
-        // File file = new File("Week5\\file.txt");
-        Scanner sc = new Scanner(System.in);
+    public static void main(String[] args) throws FileNotFoundException  {
+        File file = new File("Week5\\file.txt");
+        Scanner sc = new Scanner(file);
         
         int nStud = Integer.parseInt(sc.nextLine());
         Student[] students = new Student[nStud];
