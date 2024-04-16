@@ -1,4 +1,4 @@
-package Week10;
+// package Week10;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,11 +8,11 @@ import edu.princeton.cs.algs4.BinarySearchST;
 
 public class Flights {
     
-    public static void main(String[] args) throws FileNotFoundException {
-        File file = new File("Week10\\testfile.txt");
-        Scanner sc = new Scanner(file); 
+    public static void main(String[] args) {
+        // File file = new File("Week10\\testfile.txt");
+        // Scanner sc = new Scanner(file); 
 
-        // Scanner sc = new Scanner(System.in); 
+        Scanner sc = new Scanner(System.in); 
         BinarySearchST<Integer,String> bst = new BinarySearchST<>();
         int timeInSec;
 
@@ -53,7 +53,7 @@ public class Flights {
                     timeInSec = convertTimeToSec(t);
                     int nextDep = bst.ceiling(timeInSec);
                     dest = bst.get(nextDep);
-                    System.out.println(convertToStringTime(timeInSec) + " " + dest);
+                    System.out.println(convertToStringTime(nextDep) + " " + dest);
                     break;
                 
                 case "reroute":
